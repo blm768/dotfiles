@@ -16,7 +16,7 @@ function sync() {
 
 sync bashrc ~/.bashrc
 
-sync vim/ ~/.config/nvim --exclude='/bundle' --include='/bundle/Vundle.vim'
+sync vim/ ~/.config/nvim --include='/bundle/Vundle.vim/' --exclude='/bundle/*'
 
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
