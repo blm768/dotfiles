@@ -1,6 +1,8 @@
+" Includes snippets from the Vim Tips wiki and maybe a couple of other places
+
 set nocompatible
 
-"Plugin setup
+" Plugin setup
 if has('win32')
 	set rtp+=~/AppData/Local/nvim/bundle/Vundle.vim
 else
@@ -13,13 +15,14 @@ Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 call vundle#end()
 
-"Configure NERDTree
-"Don't let NERDTree keep vim open:
+" Configure NERDTree
+" Don't let NERDTree keep vim open:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 filetype plugin on
 filetype plugin indent on
 
+" Use the GLSL syntax file for GLSL stuff.
 autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 
 set backspace=indent,eol,start
@@ -50,10 +53,10 @@ end
 set cursorline
 set showmatch
 
-"Used to write files if I forget to run Vim as root
+" Used to write files if I forget to run Vim as root
 cmap w!! w !sudo tee % >/dev/null
 
-"More intelligent indentation on blank lines
+" More intelligent indentation on blank lines
 function! IndentWithI()
 	if len(getline('.')) == 0
 		return "_S"
@@ -63,15 +66,16 @@ function! IndentWithI()
 endfunction
 noremap <expr> i IndentWithI()
 
-"Quick window switching
+" Quick window switching
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-"To compensate for fat fingers
+" To compensate for fat fingers
 noremap <F1> <Esc>
 
-"Faster command mode
+" Faster command mode
 nmap ; :
 noremap ;; ;
+
