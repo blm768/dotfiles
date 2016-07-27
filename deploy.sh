@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: support copying only specific files? (configured via command-line options)
+
 rsync_flags=(
 	--recursive --one-file-system
 	--update --delete
@@ -14,7 +16,9 @@ function sync() {
 
 # Installs the files in this repository to their proper locations
 
+sync profile ~/.profile
 sync bashrc ~/.bashrc
+sync zshrc ~/.zshrc
 
 sync vim/ ~/.config/nvim --include='/bundle/Vundle.vim/' --exclude='/bundle/*'
 
