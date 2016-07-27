@@ -1,4 +1,5 @@
 #!/bin/bash
+# Installs the files in this repository to their proper locations
 
 # TODO: support copying only specific files? (configured via command-line options)
 
@@ -14,12 +15,14 @@ function sync() {
 	rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
 }
 
-# Installs the files in this repository to their proper locations
 
 sync profile ~/.profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 
+# TODO: figure out how to include the .git directory for Vundle.
+# (Since we have the Vundle repo as a submodule, it doesn't have its own .git directory,
+# and it doesn't really like that.)
 sync vim/ ~/.config/nvim --include='/bundle/Vundle.vim/' --exclude='/bundle/*'
 
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
