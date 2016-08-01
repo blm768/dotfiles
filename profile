@@ -4,7 +4,7 @@
 #
 
 function in_path() {
-	which "$1" > /dev/null
+	which "$1" > /dev/null 2>&1
 }
 
 export GEM_HOME="$HOME/.gem"
