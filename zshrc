@@ -6,7 +6,23 @@ SAVEHIST=1000
 # Prompt options
 #
 
-PS1='%F{1}[%f%n@%m %F{4}%~%f%F{1}]%(!.#.$)%f '
+# Anonymous function to hide temporary variables from global scope
+function {
+	# TODO: show status of previous command (with color or symbol?
+	local p_prefix='%F{1}[%f'
+	local p_user='%n'
+	# Only show hostname on SSH connections
+	if [[ -z "$SSH_CLIENT" ]]; then
+		local p_host=''
+	else
+		local p_host='@%m'
+	fi
+	local p_dir='%F{4}%~%f'
+	local p_suffix='%F{1}]%(!.#.$)%f '
+
+	PS1="${p_prefix}${p_user}${p_host} ${p_dir}${p_suffix}"
+}
+
 unsetopt beep
 bindkey -v
 
