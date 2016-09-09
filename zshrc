@@ -8,17 +8,21 @@ SAVEHIST=1000
 
 # Anonymous function to hide temporary variables from global scope
 function {
-	# TODO: show status of previous command (with color or symbol?
-	local p_prefix='%F{1}[%f'
-	local p_user='%n'
+	# TODO: show status of previous command (with color or symbol?)
+	# The directory color
+	local c_dir='%F{4}'
 	# Only show hostname on SSH connections
 	if [[ -z "$SSH_CLIENT" ]]; then
 		local p_host=''
+		local c_accent='%F{1}'
 	else
 		local p_host='@%m'
+		local c_accent='%F{6}'
 	fi
-	local p_dir='%F{4}%~%f'
-	local p_suffix='%F{1}]%(!.#.$)%f '
+	local p_prefix="${c_accent}[%f"
+	local p_user='%n'
+	local p_dir="${c_dir}%~%f"
+	local p_suffix="$c_accent]%(!.#.$)%f "
 
 	PS1="${p_prefix}${p_user}${p_host} ${p_dir}${p_suffix}"
 }
