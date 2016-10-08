@@ -1,6 +1,9 @@
 #
 # ~/.profile
 # Common options for all my sh-like shells
+
+#
+# Paths
 #
 
 function in_path() {
@@ -10,6 +13,10 @@ function in_path() {
 export GEM_HOME="$HOME/.gem"
 export PATH="$PATH:$HOME/.local/bin:$GEM_HOME/ruby/2.3.0/bin"
 
+#
+# Aliases
+#
+
 if in_path nvim; then
 	export VISUAL=nvim
 elif in_path vim; then
@@ -17,6 +24,14 @@ elif in_path vim; then
 else
 	export VISUAL=vi
 fi
+
+if in_path xdg-open; then
+	alias open=xdg-open
+fi
+
+#
+# Cleanup
+#
 
 unset -f in_path
 
