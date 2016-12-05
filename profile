@@ -29,6 +29,10 @@ if in_path xdg-open; then
 	alias open=xdg-open
 fi
 
+if in_path rbenv; then
+	eval "$(rbenv init -)"
+fi
+
 #
 # Cleanup
 #
