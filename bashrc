@@ -6,7 +6,10 @@
 [[ $- != *i* ]] && return
 
 PS1='[\u@\h \W]\$ '
-alias ls='ls --color=auto'
+
+#
+# Get config options common to all (sh-like) shells
+#
 
 source ~/.profile
 

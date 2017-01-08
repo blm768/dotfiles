@@ -14,7 +14,7 @@ export GEM_HOME="$HOME/.gem"
 export PATH="$PATH:$HOME/.local/bin:$GEM_HOME/ruby/2.3.0/bin:$GEM_HOME/bin"
 
 #
-# Aliases
+# Editor
 #
 
 if in_path nvim; then
@@ -24,6 +24,12 @@ elif in_path vim; then
 else
 	export VISUAL=vi
 fi
+
+#
+# Aliases
+#
+
+alias ls='ls --color=auto'
 
 if in_path xdg-open; then
 	alias open=xdg-open

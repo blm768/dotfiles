@@ -42,12 +42,6 @@ function {
 }
 
 #
-# Aliases
-#
-
-alias ls='ls --color=auto'
-
-#
 # Get config options common to all (sh-like) shells
 #
 
