@@ -27,8 +27,17 @@ function {
 	PS1="${p_prefix}${p_user}${p_host} ${p_dir}${p_suffix}"
 }
 
+#
+# Keyboard and editing options
+#
+
 unsetopt beep
+# Vim keys
 bindkey -v
+# Let backspace work "normally" in insert mode.
+bindkey -v '^?' backward-delete-char
+# Faster mode switching
+export KEYTIMEOUT=1
 
 autoload -Uz compinit
 compinit
