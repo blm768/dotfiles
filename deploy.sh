@@ -20,10 +20,7 @@ sync profile ~/.profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 
-# TODO: figure out how to include the .git directory for Vundle.
-# (Since we have the Vundle repo as a submodule, it doesn't have its own .git directory,
-# and it doesn't really like that.)
-sync vim/ ~/.config/nvim --include='/bundle/Vundle.vim/' --exclude='/bundle/*'
+sync vim/ ~/.config/nvim --exclude='/plugged/'
 
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
@@ -31,6 +28,6 @@ sync vim/ ~/.config/nvim --include='/bundle/Vundle.vim/' --exclude='/bundle/*'
 cat <<EOS
 
 #### Deployment complete ####
-To install Vim plugins, run the command :PluginInstall in Vim.
+To install Vim plugins, run the command :PlugInstall in Vim.
 EOS
 

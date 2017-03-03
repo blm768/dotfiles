@@ -6,18 +6,12 @@ set nocompatible
 " Plugin setup
 "
 
-if has('win32')
-	set rtp+=~/AppData/Local/nvim/bundle/Vundle.vim
-else
-	set rtp+=~/.config/nvim/bundle/Vundle.vim
-endif
-
-call vundle#begin() 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'https://github.com/tpope/vim-surround'
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-call vundle#end()
+call plug#begin() 
+Plug 'VundleVim/Vundle.vim'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+call plug#end()
 
 " Configure NERDTree
 " Don't let NERDTree keep vim open:
