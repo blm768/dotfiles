@@ -32,7 +32,11 @@ fi
 alias ls='ls --color=auto'
 
 if in_path xdg-open; then
-	alias open=xdg-open
+	function open() {
+		for i in "$@"; do
+			xdg-open "$i"
+		done
+	}
 fi
 
 #
