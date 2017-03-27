@@ -7,7 +7,6 @@ set nocompatible
 "
 
 call plug#begin() 
-Plug 'VundleVim/Vundle.vim'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'Xuyuanp/nerdtree-git-plugin'
