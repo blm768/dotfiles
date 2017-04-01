@@ -40,6 +40,14 @@ if in_path xdg-open; then
 fi
 
 #
+# SSH agent
+#
+
+if [ -e "$XDG_RUNTIME_DIR/ssh-agent.sock" ]; then
+	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
+fi
+
+#
 # Cleanup
 #
 

@@ -20,7 +20,9 @@ sync profile ~/.profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 
-sync vim/ ~/.config/nvim --exclude='/plugged/'
+sync systemd/ ~/.config/systemd/ --copy-links
+
+sync vim/ ~/.config/nvim/ --exclude='/plugged/'
 
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
