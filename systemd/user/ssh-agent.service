@@ -3,7 +3,6 @@ Description=SSH key agent
 
 [Service]
 ExecStart=/usr/bin/ssh-agent -D -a ${XDG_RUNTIME_DIR}/ssh-agent.sock
-#ExecStart=/usr/bin/echo ${XDG_RUNTIME_DIR}/ssh-agent.sock
 
 [Install]
 WantedBy=default.target
