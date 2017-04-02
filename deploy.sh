@@ -16,7 +16,7 @@ function sync() {
 }
 
 
-sync profile ~/.profile
+sync profile ~/.config/profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 

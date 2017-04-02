@@ -11,5 +11,5 @@ PS1='[\u@\h \W]\$ '
 # Get config options common to all (sh-like) shells
 #
 
-source ~/.profile
+source ~/.config/profile
 
