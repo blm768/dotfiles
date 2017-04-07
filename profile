@@ -47,6 +47,14 @@ if [ -e "$XDG_RUNTIME_DIR/ssh-agent.sock" ]; then
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
 fi
 
+function ssh-add-all() {
+	keys=()
+	for pub in ~/.ssh/*.pub; do
+		keys+=("${pub%.pub}")
+	done
+	ssh-add "${keys[@]}"
+}
+
 #
 # Cleanup
 #
