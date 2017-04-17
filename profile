@@ -24,6 +24,8 @@ elif in_path vim; then
 else
 	export VISUAL=vi
 fi
+export EDITOR="$VISUAL"
+export FCEDIT="$EDITOR"
 
 #
 # Aliases
