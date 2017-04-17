@@ -6,7 +6,7 @@
 rsync_flags=(
 	--recursive --one-file-system
 	--update --delete
-	--times --perms --no-owner --no-group
+	--times --omit-dir-times --perms --no-owner --no-group
 	--progress --itemize-changes
 )
 
@@ -20,7 +20,7 @@ sync profile ~/.config/profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 
-sync systemd/ ~/.config/systemd/ --copy-links
+sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
 
 sync vim/ ~/.config/nvim/ --exclude='/plugged/'
 
