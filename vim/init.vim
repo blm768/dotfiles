@@ -9,7 +9,8 @@ set nocompatible
 call plug#begin() 
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/scrooloose/nerdtree.git'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin'
+Plug 'https://github.com/rust-lang/rust.vim.git'
 call plug#end()
 
 " Configure NERDTree
