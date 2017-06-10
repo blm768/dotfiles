@@ -19,6 +19,7 @@ export PATH="$PATH:$HOME/.local/bin:$GEM_HOME/ruby/2.3.0/bin:$GEM_HOME/bin"
 
 if in_path nvim; then
 	export VISUAL=nvim
+	alias vim=nvim
 elif in_path vim; then
 	export VISUAL=vim
 else
