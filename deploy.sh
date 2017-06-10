@@ -15,17 +15,19 @@ function sync() {
 	rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
 }
 
+sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
 
 sync profile ~/.config/profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 
-sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
-
 sync vim/ ~/.config/nvim/ --exclude='/plugged/'
 
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
+
+sync mpd.conf ~/.config/mpd/
+mkdir -p ~/.config/mpd/playlists
 
 cat <<EOS
 
