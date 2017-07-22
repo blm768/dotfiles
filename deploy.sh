@@ -21,6 +21,8 @@ sync profile ~/.config/profile
 sync bashrc ~/.bashrc
 sync zshrc ~/.zshrc
 
+sync gitconfig ~/.gitconfig
+
 sync vim/ ~/.config/nvim/ --exclude='/plugged/'
 
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
