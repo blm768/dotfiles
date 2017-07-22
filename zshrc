@@ -1,4 +1,6 @@
-HISTFILE=~/.zsh_history
+export XDG_DATA_HOME=~/.local/share
+
+HISTFILE=$XDG_DATA_HOME/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
