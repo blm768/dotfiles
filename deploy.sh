@@ -15,6 +15,7 @@ function sync() {
 	rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
 }
 
+mkdir -p ~/.config/systemd/
 sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
 
 sync profile ~/.config/profile
