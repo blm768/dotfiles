@@ -4,18 +4,18 @@
 # TODO: support copying only specific files? (configured via command-line options)
 
 rsync_flags=(
-	--recursive --one-file-system
-	--update --delete
-	--times --omit-dir-times --perms --no-owner --no-group
-	--progress --itemize-changes
+    --recursive --one-file-system
+    --update --delete
+    --times --omit-dir-times --perms --no-owner --no-group
+    --progress --itemize-changes
 )
 
 # Copies from $1 to $2 (with extra rsync parameters following)
 function sync() {
-	rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
+    mkdir -p "$2"
+    rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
 }
 
-mkdir -p ~/.config/systemd/
 sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
 
 sync profile ~/.config/profile
