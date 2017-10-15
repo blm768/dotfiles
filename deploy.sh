@@ -12,7 +12,7 @@ rsync_flags=(
 
 # Copies from $1 to $2 (with extra rsync parameters following)
 function sync() {
-    mkdir -p "$2"
+    mkdir -p $(dirname "$2")
     rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
 }
 
