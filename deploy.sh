@@ -37,4 +37,3 @@ cat <<EOS
 #### Deployment complete ####
 To install Vim plugins, run the command :PlugInstall in Vim.
 EOS
-
