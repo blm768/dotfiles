@@ -47,7 +47,10 @@ export FCEDIT="$EDITOR"
 # Aliases
 #
 
-alias ls='ls --color=auto'
+# Make ls use colors if it supports them.
+if ls --color=auto ~/.config >/dev/null 2>&1; then
+    alias ls='ls --color=auto'
+fi
 
 if in_path xdg-open; then
    function open() {
