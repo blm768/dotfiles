@@ -1,7 +1,13 @@
 #
-# ~/.profile
+# ~.config/profile
 # Common options for all my sh-like shells
 #
+
+# Load "local" (machine-specific) profile
+# (Useful for Macs)
+if [ -e ~/.profile ]; then
+    . ~/.profile
+fi
 
 #
 # Paths
