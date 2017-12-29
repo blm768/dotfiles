@@ -78,6 +78,35 @@ function ssh-add-all() {
 }
 
 #
+# dtach/dvtm helpers
+#
+
+if in_path dtach; then
+    function dtsession() {
+        dtach_dir="$XDG_DATA_HOME/dtach"
+        mkdir -p "$dtach_dir"
+        sock_name=$(mktemp -p "$dtach_dir" session.XXXXXX)
+        if [[ $? -ne 0 ]]; then
+            echo "Unable to create session file"
+            return 1
+        fi
+        rm "$sock_name"
+        dtach -c "$sock_name" "${@:-dvtm}"
+    }
+
+    function dtls() {
+        dtach_dir="$XDG_DATA_HOME/dtach"
+        ls "$dtach_dir"
+    }
+
+    function dtattach() {
+        dtach_dir="$XDG_DATA_HOME/dtach"
+        session="${1:-$(ls "$dtach_dir" | head -n 1)}"
+        dtach -a "$dtach_dir/$session"
+    }
+fi
+
+#
 # Cleanup
 #
 
