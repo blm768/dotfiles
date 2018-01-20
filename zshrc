@@ -1,9 +1,5 @@
 export XDG_DATA_HOME=~/.local/share
 
-HISTFILE=$XDG_DATA_HOME/zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-
 #
 # Prompt options
 #
@@ -44,7 +40,17 @@ export KEYTIMEOUT=1
 autoload -Uz compinit
 compinit
 
-# Used on Arch with the zsh-syntax-highlighting package
+#
+# History options
+#
+
+HISTFILE=$XDG_DATA_HOME/zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt HIST_IGNORE_DUPS
+
+# Used on Arch Linux with the zsh-syntax-highlighting package
 function {
     local syntax_plugin=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     if [ -f "$syntax_plugin" ]; then
@@ -57,4 +63,3 @@ function {
 #
 
 source ~/.config/profile
-
