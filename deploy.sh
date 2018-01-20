@@ -1,6 +1,8 @@
 #!/bin/bash
 # Installs the files in this repository to their proper locations
 
+set -e
+
 # TODO: support copying only specific files? (configured via command-line options)
 
 rsync_flags=(
@@ -24,13 +26,12 @@ sync zshrc ~/.zshrc
 
 sync gitconfig ~/.gitconfig
 
-sync vim/ ~/.config/nvim/ --exclude='/plugged/'
-
-[ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
-[ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
-
 sync mpd.conf ~/.config/mpd/
 mkdir -p ~/.config/mpd/playlists
+
+sync vim/ ~/.config/nvim/ --exclude='/plugged/'
+[ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
+[ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
 
 cat <<EOS
 

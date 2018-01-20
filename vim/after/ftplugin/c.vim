@@ -2,4 +2,3 @@
 "is opened below them:
 setlocal comments-=://
 setlocal comments+=f://
-

@@ -59,11 +59,11 @@ set scrolloff=2
 
 syntax on
 if has("gui_running")
-	set background=light
-	colorscheme solarized
-	if has("win32") || has("win64")
-		set guifont=Courier_New:h9:cANSI
-	end
+    set background=light
+    colorscheme solarized
+    if has("win32") || has("win64")
+        set guifont=Courier_New:h9:cANSI
+    end
 end
 set cursorline
 set showmatch
@@ -77,11 +77,11 @@ cmap w!! w !sudo tee % >/dev/null
 
 " More intelligent indentation on blank lines
 function! IndentWithI()
-	if len(getline('.')) == 0
-		return "_S"
-	else
-		return "i"
-	endif
+    if len(getline('.')) == 0
+        return "_S"
+    else
+        return "i"
+    endif
 endfunction
 noremap <expr> i IndentWithI()
 
@@ -97,4 +97,3 @@ noremap <F1> <Esc>
 " Faster command mode
 nmap ; :
 noremap ;; ;
-

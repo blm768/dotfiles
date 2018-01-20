@@ -12,4 +12,3 @@ PS1='[\u@\h \W]\$ '
 #
 
 source ~/.config/profile
-
