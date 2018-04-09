@@ -55,17 +55,8 @@ set shellslash
 " Display options
 "
 
-set number
 set scrolloff=2
-
-syntax on
-if has("gui_running")
-    set background=light
-    colorscheme solarized
-    if has("win32") || has("win64")
-        set guifont=Courier_New:h9:cANSI
-    end
-end
+set number
 set cursorline
 set showmatch
 
@@ -91,9 +82,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" To compensate for fat fingers
-noremap <F1> <Esc>
 
 " Faster command mode
 nmap ; :
