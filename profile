@@ -3,12 +3,6 @@
 # Common options for all my sh-like shells
 #
 
-# Load "local" (machine-specific) profile
-# (Useful for Macs)
-if [ -e ~/.profile ]; then
-    . ~/.profile
-fi
-
 #
 # Paths
 #
@@ -17,10 +11,14 @@ function in_path() {
     which "$1" > /dev/null 2>&1
 }
 
+if [ -d ~/.local/bin ]; then
+    export PATH="$PATH:$HOME/.local/bin"
+fi
+
 # Add Ruby gem executables to PATH
 if [ -d ~/.gem ]; then
     export GEM_HOME="$HOME/.gem"
-    export PATH="$PATH:$HOME/.local/bin:$GEM_HOME/ruby/2.3.0/bin:$GEM_HOME/bin"
+    export PATH="$PATH:$GEM_HOME/ruby/2.3.0/bin:$GEM_HOME/bin"
 fi
 
 # Add Cargo-installed executables to PATH
@@ -111,5 +109,13 @@ fi
 #
 
 unset -f in_path
+
+#
+# Load "local" (machine-specific) profile
+#
+
+if [ -e ~/.profile ]; then
+    . ~/.profile
+fi
 
 # vim:syntax=sh:sw=4:ts=4:et
