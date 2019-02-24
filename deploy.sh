@@ -33,6 +33,10 @@ sync vim/ ~/.config/nvim/ --exclude='/plugged/' --exclude='/swap/'
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
 
+# Allows games that use OpenALsoft to be moved to a new audio sink. See https://unix.stackexchange.com/questions/452907/
+# (Necessary to use alternate sinks for games like Baldur's Gate)
+sync alsoftrc ~/.alsoftrc
+
 cat <<EOS
 
 #### Deployment complete ####
