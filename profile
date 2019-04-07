@@ -105,6 +105,14 @@ if in_path dtach; then
 fi
 
 #
+# FZF configuration
+#
+
+if in_path fzf && in_path rg; then
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+fi
+
+#
 # Cleanup
 #
 
