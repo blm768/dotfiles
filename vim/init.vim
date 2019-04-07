@@ -13,6 +13,7 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/tpope/vim-sleuth.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
 call plug#end()
 
 " Configure NERDTree
@@ -96,4 +97,3 @@ nnoremap <C-l> <C-w>l
 " FZF bindings
 
 noremap <C-p> :FZF<CR>
-
