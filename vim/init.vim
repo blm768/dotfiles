@@ -6,13 +6,13 @@ set nocompatible
 " Plugin setup
 "
 
-call plug#begin() 
+call plug#begin()
 Plug 'https://github.com/scrooloose/nerdtree.git'
-Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin'
-Plug 'https://github.com/rust-lang/rust.vim.git'
-Plug 'https://github.com/altercation/vim-colors-solarized'
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/tpope/vim-sleuth.git'
-Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/junegunn/fzf.git'
 call plug#end()
 
 " Configure NERDTree
@@ -61,6 +61,16 @@ set cursorline
 set showmatch
 
 "
+" Misc. options
+"
+
+set mouse=a
+
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+endif
+
+"
 " Commands and mappings
 "
 
@@ -83,6 +93,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Faster command mode
-nmap ; :
-noremap ;; ;
+" FZF bindings
+
+noremap <C-p> :FZF<CR>
+
