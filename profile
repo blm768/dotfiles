@@ -59,6 +59,14 @@ if in_path xdg-open; then
 fi
 
 #
+# GPG agent
+#
+
+if in_path gpg && in_path tty; then
+    export GPG_TTY="$(tty)"
+fi
+
+#
 # SSH agent
 #
 
