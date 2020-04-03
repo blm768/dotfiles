@@ -26,9 +26,6 @@ sync zshrc ~/.zshrc
 
 sync gitconfig ~/.gitconfig
 
-sync mpd.conf ~/.config/mpd/
-mkdir -p ~/.config/mpd/playlists
-
 sync vim/ ~/.config/nvim/ --exclude='/plugged/' --exclude='/swap/'
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
