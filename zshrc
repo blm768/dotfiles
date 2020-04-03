@@ -50,6 +50,12 @@ SAVEHIST=1000
 
 setopt HIST_IGNORE_DUPS
 
+if which fzf > /dev/null 2>&1; then
+    function fh() {
+        print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac -n 2.. | sed -E 's/^ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g' )
+    }
+fi
+
 # Used on Arch Linux with the zsh-syntax-highlighting package
 function {
     local syntax_plugin=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
