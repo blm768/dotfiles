@@ -20,9 +20,9 @@ function sync() {
 
 sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
 
-sync profile ~/.config/profile
-sync bashrc ~/.bashrc
-sync zshrc ~/.zshrc
+sync profile ~/.config/profile.global
+sync bashrc ~/.config/bashrc.global
+sync zshrc ~/.config/zshrc.global
 
 sync gitconfig ~/.gitconfig
 

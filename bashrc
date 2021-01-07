@@ -1,5 +1,5 @@
 #
-# ~/.bashrc
+# ~/.config/bashrc.global
 #
 
 # If not running interactively, don't do anything
@@ -11,4 +11,4 @@ PS1='[\u@\h \W]\$ '
 # Get config options common to all (sh-like) shells
 #
 
-source ~/.config/profile
+source ~/.config/profile.global

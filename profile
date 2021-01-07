@@ -1,5 +1,5 @@
 #
-# ~.config/profile
+# ~/.config/profile.global
 # Common options for all my sh-like shells
 #
 
@@ -125,13 +125,5 @@ fi
 #
 
 unset -f in_path
-
-#
-# Load "local" (machine-specific) profile
-#
-
-if [ -e ~/.profile ]; then
-    . ~/.profile
-fi
 
 # vim:syntax=sh:sw=4:ts=4:et

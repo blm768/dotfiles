@@ -1,3 +1,7 @@
+#
+# ~/.config/zshrc.global
+#
+
 export XDG_DATA_HOME=~/.local/share
 
 #
@@ -68,4 +72,4 @@ function {
 # Get config options common to all (sh-like) shells
 #
 
-source ~/.config/profile
+source ~/.config/profile.global
