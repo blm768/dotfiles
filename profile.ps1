@@ -11,3 +11,7 @@ Set-PSReadlineOption -EditMode vi
 
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+# Join-Object
+
+. $home\Documents\WindowsPowerShell\Scripts\Join.ps1
