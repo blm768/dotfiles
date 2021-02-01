@@ -5,29 +5,46 @@ Copy-Item profile.ps1 $profile_loc
 
 # Windows Terminal
 
+function Merge-Objects {
+    param ($left, $right)
+
+    if ($left -eq $null) {
+        return $right;
+    }
+
+    $type = $left.GetType();
+    if ($right -ne $null -and $right.GetType() -eq $type) {
+        if ($type -eq [System.Management.Automation.PSCustomObject]) {
+            $out = [PSCustomObject]@{}
+            foreach ($prop in $left | Get-Member -MemberType Properties) {
+                $out | Add-Member -MemberType NoteProperty -Name $prop.Name -Value $left.($prop.Name)
+            }
+            Write-Debug $out
+            foreach ($prop in $right | Get-Member -MemberType Properties) {
+                if ($left | Get-Member $prop.Name -MemberType Properties) {
+                    $val = Merge-Objects $left.($prop.Name) $right.($prop.Name)
+                } else {
+                    $val = $right.($prop.Name)
+                }
+                $out | Add-Member -MemberType NoteProperty -Name $prop.Name -Value $val -Force
+            }
+            return $out
+        } elseif ($type -eq [System.Object[]]) {
+            return $left + $right
+        }
+    }
+
+    return $right;
+}
+
 $config_dir = "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
-$configs = , 'windows-terminal.json'
+$config = Get-Content windows-terminal.json -Raw | ConvertFrom-Json
 $local_file = "$config_dir\local.json"
 if (Test-Path $local_file) {
-    $configs += $local_file
+    $local_config = Get-Content $local_file -Raw | ConvertFrom-Json
+    $config = Merge-Objects $config $local_config
 }
-$jq_query = @'
-def merge($b):
-    def merge_obj($b):
-        $b + with_entries(
-            .key as $key | .value |= if $key | in($b) then merge($b[$key]) else . end
-        );
-    if type == \"object\" and ($b | type) == \"object\" then
-        merge_obj($b)
-    elif type == \"array\" and ($b | type) == \"array\" then
-        . + $b
-    else
-        $b
-    end;
-
-reduce .[] as $i ({}; merge($i))
-'@.replace("`r`n", "`n")
-$config = jq --slurp $jq_query $configs
+$config = ConvertTo-Json -InputObject $config -Depth 100
 
 # Need to do this to get UTF-8 w/o BOM when using PowerShell 5.x
 [IO.File]::WriteAllLines("$config_dir\settings.json", $config)
