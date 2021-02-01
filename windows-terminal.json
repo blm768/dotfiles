@@ -1,0 +1,53 @@
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "profiles": {
+        "defaults": {},
+        "list": [
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "acrylicOpacity": 0.7,
+                "colorScheme": "Frost",
+                "cursorColor": "#000000",
+                "useAcrylic": true,
+                "hidden": false
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "cmd",
+                "commandline": "cmd.exe",
+                "hidden": false
+            }
+        ]
+    },
+    "disabledProfileSources": [
+        "Windows.Terminal.Azure"
+    ],
+    "theme": "light",
+    "schemes": [
+        {
+            "name": "Frost",
+            "background": "#FFFFFF",
+            "black": "#3C5712",
+            "blue": "#17b2ff",
+            "brightBlack": "#749B36",
+            "brightBlue": "#27B2F6",
+            "brightCyan": "#13A8C0",
+            "brightGreen": "#89AF50",
+            "brightPurple": "#F2A20A",
+            "brightRed": "#F49B36",
+            "brightWhite": "#741274",
+            "brightYellow": "#991070",
+            "cyan": "#3C96A6",
+            "foreground": "#000000",
+            "green": "#6AAE08",
+            "purple": "#991070",
+            "red": "#8D0C0C",
+            "white": "#6E386E",
+            "yellow": "#991070"
+        }
+    ],
+
+    "keybindings": []
+}
