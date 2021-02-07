@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Installs the files in this repository to their proper locations
 
 set -e

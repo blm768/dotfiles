@@ -4,6 +4,10 @@
 
 export XDG_DATA_HOME=~/.local/share
 
+function in_path() {
+    which "$1" > /dev/null 2>&1
+}
+
 #
 # Prompt options
 #
@@ -54,10 +58,12 @@ SAVEHIST=1000
 
 setopt HIST_IGNORE_DUPS
 
-if which fzf > /dev/null 2>&1; then
-    function fh() {
-        print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac -n 2.. | sed -E 's/^ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g' )
-    }
+#
+# FZF
+#
+
+if in_path fzf-share; then
+    source "$(fzf-share)/key-bindings.zsh"
 fi
 
 # Used on Arch Linux with the zsh-syntax-highlighting package
@@ -67,6 +73,12 @@ function {
         source "$syntax_plugin"
     fi
 }
+
+#
+# Cleanup
+#
+
+unset -f in_path
 
 #
 # Get config options common to all (sh-like) shells
