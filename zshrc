@@ -62,9 +62,13 @@ setopt HIST_IGNORE_DUPS
 # FZF
 #
 
-if in_path fzf-share; then
-    source "$(fzf-share)/key-bindings.zsh"
-fi
+function {
+    local fzf_share_path=/usr/share/fzf
+    if in_path fzf-share; then # Used on NixOS
+        fzf_share_path="$(fzf-share)"
+    fi
+    source "${fzf_share_path}/key-bindings.zsh"
+}
 
 # Used on Arch Linux with the zsh-syntax-highlighting package
 function {
