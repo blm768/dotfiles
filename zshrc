@@ -64,6 +64,9 @@ setopt HIST_IGNORE_DUPS
 
 function {
     local fzf_share_path=/usr/share/fzf
+    if ! [ -d "${fzf_share_path}" ]; then # Mac with Homebrew
+        fzf_share_path=/usr/local/opt/fzf/shell
+    fi
     if in_path fzf-share; then # Used on NixOS
         fzf_share_path="$(fzf-share)"
     fi
