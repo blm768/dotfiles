@@ -67,7 +67,9 @@ function {
     if in_path fzf-share; then # Used on NixOS
         fzf_share_path="$(fzf-share)"
     fi
-    source "${fzf_share_path}/key-bindings.zsh"
+    if [ -d "$fzf_share_path" ]; then
+        source "${fzf_share_path}/key-bindings.zsh"
+    fi
 }
 
 # Used on Arch Linux with the zsh-syntax-highlighting package
