@@ -59,19 +59,29 @@ SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
 #
-# FZF
+# Skim/FZF
 #
 
 function {
-    local fzf_share_path=/usr/share/fzf
-    if ! [ -d "${fzf_share_path}" ]; then # Mac with Homebrew
-        fzf_share_path=/usr/local/opt/fzf/shell
-    fi
-    if in_path fzf-share; then # Used on NixOS
-        fzf_share_path="$(fzf-share)"
-    fi
-    if [ -d "$fzf_share_path" ]; then
-        source "${fzf_share_path}/key-bindings.zsh"
+    if in_path sk; then
+        local skim_share_path=/usr/share/skim
+        if in_path sk-share; then # Used on NixOS
+            skim_share_path="$(sk-share)"
+        fi
+        if [ -d "$skim_share_path" ]; then
+            source "${skim_share_path}/key-bindings.zsh"
+        fi
+    elif in_path fzf; then
+        local fzf_share_path=/usr/share/fzf
+        if ! [ -d "${fzf_share_path}" ]; then # Mac with Homebrew
+            fzf_share_path=/usr/local/opt/fzf/shell
+        fi
+        if in_path fzf-share; then # Used on NixOS
+            fzf_share_path="$(fzf-share)"
+        fi
+        if [ -d "$fzf_share_path" ]; then
+            source "${fzf_share_path}/key-bindings.zsh"
+        fi
     fi
 }
 
