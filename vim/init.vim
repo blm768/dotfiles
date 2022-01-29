@@ -92,6 +92,9 @@ endif
 " Commands and mappings
 "
 
+nnoremap <Space> <Nop>
+let mapleader = " "
+
 " Used to write files if I forget to run Vim as root
 cmap w!! w !sudo tee % >/dev/null
 
