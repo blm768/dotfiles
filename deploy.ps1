@@ -19,7 +19,6 @@ function Merge-Objects {
             foreach ($prop in $left | Get-Member -MemberType Properties) {
                 $out | Add-Member -MemberType NoteProperty -Name $prop.Name -Value $left.($prop.Name)
             }
-            Write-Debug $out
             foreach ($prop in $right | Get-Member -MemberType Properties) {
                 if ($left | Get-Member $prop.Name -MemberType Properties) {
                     $val = Merge-Objects $left.($prop.Name) $right.($prop.Name)
@@ -48,3 +47,7 @@ $config = ConvertTo-Json -InputObject $config -Depth 100
 
 # Need to do this to get UTF-8 w/o BOM when using PowerShell 5.x
 [IO.File]::WriteAllLines("$config_dir\settings.json", $config)
+
+# (Neo)vim
+
+robocopy .\vim "$HOME\AppData\Local\nvim" /MIR /XD plugged /XD swap
