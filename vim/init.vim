@@ -16,6 +16,7 @@ Plug 'https://github.com/tpope/vim-sleuth.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'https://github.com/zefei/vim-wintabs.git'
 
 if has("nvim-0.6.0")
     Plug 'neovim/nvim-lspconfig'
@@ -113,3 +114,15 @@ nnoremap <C-l> <C-w>l
 " FZF bindings
 
 noremap <C-p> :FZF<CR>
+
+" Wintabs
+
+map <Leader>j <Plug>(wintabs_previous)
+map <Leader>k <Plug>(wintabs_next)
+map <Leader>q <Plug>(wintabs_close)
+map <C-T>u <Plug>(wintabs_undo)
+map <C-T>o <Plug>(wintabs_only)
+map <C-W>c <Plug>(wintabs_close_window)
+map <C-W>o <Plug>(wintabs_only_window)
+command! Tabc WintabsCloseVimtab
+command! Tabo WintabsOnlyVimtab
