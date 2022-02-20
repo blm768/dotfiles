@@ -12,10 +12,10 @@ Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
 Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/tpope/vim-sleuth.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
-Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'https://github.com/zefei/vim-wintabs.git'
 
 if has("nvim-0.6.0")
@@ -83,6 +83,8 @@ set showmatch
 "
 
 set mouse=a
+" Make vim-signify update more frequently
+set updatetime=100
 
 if executable('rg')
     set grepprg=rg\ --vimgrep
