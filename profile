@@ -45,6 +45,10 @@ export FCEDIT="$EDITOR"
 # Aliases
 #
 
+if in_path git; then
+    alias g=git
+fi
+
 # Make ls use colors if it supports them.
 if ls --color=auto ~/.config >/dev/null 2>&1; then
     alias ls='ls --color=auto'

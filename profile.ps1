@@ -1,5 +1,6 @@
 # Aliases
 
+Set-Alias -Name g -Value git
 Set-Alias -Name open -Value Start-Process
 Set-Alias -Name which -Value Get-Command
 
