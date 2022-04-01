@@ -11,9 +11,10 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
+Plug 'https://github.com/mhinz/vim-grepper.git'
+Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/rbong/vim-flog'
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/tpope/vim-sleuth.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
@@ -120,6 +121,17 @@ nnoremap <C-l> <C-w>l
 " FZF bindings
 
 noremap <C-p> :FZF<CR>
+
+" Grepper
+
+let g:grepper = {}
+let g:grepper.tools = ['rg', 'git', 'findstr']
+
+nmap <leader>g :Grepper -tool rg<cr>
+nmap <leader>G :Grepper -tool git<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 " Wintabs
 
