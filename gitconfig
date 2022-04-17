@@ -1,7 +1,0 @@
-[user]
-    email = blm768@gmail.com
-    name = Ben Merritt
-[core]
-    autocrlf = input
-[pull]
-    rebase = true

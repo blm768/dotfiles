@@ -24,7 +24,7 @@ sync profile ~/.config/profile.global
 sync bashrc ~/.config/bashrc.global
 sync zshrc ~/.config/zshrc.global
 
-sync gitconfig ~/.gitconfig
+sync git/ ~/.config/git/global/
 
 sync vim/ ~/.config/nvim/ --exclude='/plugged/' --exclude='/swap/'
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
