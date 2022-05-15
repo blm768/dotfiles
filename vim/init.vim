@@ -19,6 +19,7 @@ Plug 'https://github.com/tpope/vim-sleuth.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/junegunn/fzf.vim.git'
+Plug 'https://github.com/junegunn/gv.vim.git'
 Plug 'https://github.com/zefei/vim-wintabs.git'
 
 if has("nvim-0.6.0")
