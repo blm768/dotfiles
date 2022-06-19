@@ -20,10 +20,14 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
-Plug 'https://github.com/zefei/vim-wintabs.git'
 
 if has("nvim-0.6.0")
     Plug 'neovim/nvim-lspconfig'
+endif
+
+if has("nvim-0.5.0")
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'nvim-lualine/lualine.nvim'
 endif
 call plug#end()
 
@@ -38,6 +42,28 @@ lua << EOF
     lsp.clangd.setup{}
     lsp.rnix.setup{}
     lsp.rust_analyzer.setup{}
+EOF
+endif
+
+" Lualine
+if has("nvim-0.5.0")
+lua << EOF
+require('lualine').setup {
+    options = {
+        icons_enabled = true,
+        section_separators = '',
+        component_separators = '',
+    },
+    sections = {
+        lualine_a = {'buffers'},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {'branch'},
+    },
+    extensions = {'fugitive', 'fzf', 'nerdtree'},
+}
 EOF
 endif
 
@@ -133,6 +159,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Buffer navigation
+
+nnoremap <leader>h :bprev<cr>
+nnoremap <leader>l :bnext<cr>
+nnoremap <leader>q :bdelete<cr>
+
 " FZF bindings
 
 noremap <C-p> :FZF<CR>
@@ -147,15 +179,3 @@ nmap <leader>G :Grepper -tool git<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
-
-" Wintabs
-
-map <Leader>j <Plug>(wintabs_previous)
-map <Leader>k <Plug>(wintabs_next)
-map <Leader>q <Plug>(wintabs_close)
-map <C-T>u <Plug>(wintabs_undo)
-map <C-T>o <Plug>(wintabs_only)
-map <C-W>c <Plug>(wintabs_close_window)
-map <C-W>o <Plug>(wintabs_only_window)
-command! Tabc WintabsCloseVimtab
-command! Tabo WintabsOnlyVimtab
