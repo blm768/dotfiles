@@ -13,6 +13,7 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
 Plug 'https://github.com/mhinz/vim-grepper.git'
 Plug 'https://github.com/mhinz/vim-signify.git'
+Plug 'https://github.com/moll/vim-bbye.git'
 Plug 'https://github.com/rbong/vim-flog'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-sleuth.git'
@@ -163,7 +164,7 @@ nnoremap <C-l> <C-w>l
 
 nnoremap <leader>h :bprev<cr>
 nnoremap <leader>l :bnext<cr>
-nnoremap <leader>q :bdelete<cr>
+nnoremap <leader>q :Bdelete<cr>
 
 " FZF bindings
 
