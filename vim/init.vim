@@ -22,6 +22,10 @@ Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
 
+if has("nvim-0.7.0")
+    Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
+endif
+
 if has("nvim-0.6.0")
     Plug 'neovim/nvim-lspconfig'
 endif
@@ -180,3 +184,13 @@ nmap <leader>G :Grepper -tool git<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
+
+" Toggleterm
+if has("nvim-0.7.0")
+lua << EOF
+local toggleterm = require("toggleterm")
+toggleterm.setup{
+    open_mapping = [[<c-\>]],
+}
+EOF
+endif
