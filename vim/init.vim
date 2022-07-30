@@ -21,6 +21,7 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
+Plug 'https://github.com/wellle/targets.vim.git'
 
 if has("nvim-0.7.0")
     Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
