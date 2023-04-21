@@ -11,4 +11,5 @@ Set-PSReadlineOption -EditMode vi
 # Completion
 
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
