@@ -121,7 +121,8 @@ fi
 #
 
 if in_path fzf && in_path rg; then
-    export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+    export FZF_DEFAULT_COMMAND='rg --files --hidden'
+    export FZF_CTRL_T_COMMAND='rg --files --hidden'
 fi
 
 #
