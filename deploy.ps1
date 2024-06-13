@@ -3,6 +3,9 @@ Install-Module -Scope CurrentUser PSFzf
 $profile_loc = $PROFILE."CurrentUserAllHosts"
 Copy-Item profile.ps1 $profile_loc
 
+Copy-Item nushell\config.nu "$env:APPDATA\nushell\config.nu"
+Copy-Item nushell\env.nu "$env:APPDATA\nushell\env.nu"
+
 # Git
 
 robocopy .\git "$HOME\AppData\Local\gitconfig" /MIR
