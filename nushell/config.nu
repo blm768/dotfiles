@@ -917,3 +917,5 @@ $env.config = {
         }
     ]
 }
+
+if ($env.TERM_PROGRAM? == "vscode") { $env.config.shell_integration = true }
