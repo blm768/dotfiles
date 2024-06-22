@@ -23,6 +23,8 @@ sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
 sync profile ~/.config/profile.global
 sync bashrc ~/.config/bashrc.global
 sync zshrc ~/.config/zshrc.global
+sync nushell/config.nu ~/.config/nushell/config.local.nu
+sync nushell/env.nu ~/.config/nushell/env.local.nu
 
 sync git/ ~/.config/git/global/
 
