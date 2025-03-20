@@ -23,6 +23,11 @@ Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
 Plug 'https://github.com/wellle/targets.vim.git'
 
+if has("nvim-0.8.0")
+    Plug 'akinsho/bufferline.nvim'
+    Plug 'nvim-tree/nvim-web-devicons'
+endif
+
 if has("nvim-0.7.0")
     Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
 endif
@@ -61,7 +66,7 @@ require('lualine').setup {
         component_separators = '',
     },
     sections = {
-        lualine_a = {'buffers'},
+        lualine_a = {},
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
@@ -69,6 +74,18 @@ require('lualine').setup {
         lualine_z = {'branch'},
     },
     extensions = {'fugitive', 'fzf', 'nerdtree'},
+}
+EOF
+endif
+
+" Bufferline
+if has("nvim-0.8.0")
+set termguicolors
+lua << EOF
+require("bufferline").setup {
+    options = {
+        diagnostics = "nvim_lsp",
+    },
 }
 EOF
 endif
