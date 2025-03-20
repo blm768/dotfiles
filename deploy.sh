@@ -18,8 +18,6 @@ function sync() {
     rsync "${rsync_flags[@]}" "${@:3}" "$1" "$2"
 }
 
-sync systemd/ ~/.config/systemd/ --exclude='/user/default.target.wants/'
-
 sync profile ~/.config/profile.global
 sync bashrc ~/.config/bashrc.global
 sync zshrc ~/.config/zshrc.global
