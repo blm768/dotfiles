@@ -11,6 +11,7 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
+Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/mhinz/vim-grepper.git'
 Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/moll/vim-bbye.git'
@@ -187,6 +188,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>h :bprev<cr>
 nnoremap <leader>l :bnext<cr>
 nnoremap <leader>q :Bdelete<cr>
+
+" Emmet
+
+let g:user_emmet_install_global = 0
 
 " FZF bindings
 
