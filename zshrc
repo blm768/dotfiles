@@ -45,6 +45,18 @@ bindkey -v '^?' backward-delete-char
 # Faster mode switching
 export KEYTIMEOUT=1
 
+# Fix Home/End keys
+# https://wiki.archlinux.org/title/Zsh#Key_bindings
+function {
+  typeset -g -A keys
+
+  keys[Home]="${terminfo[khome]}"
+  keys[End]="${terminfo[kend]}"
+
+  [[ -n "${keys[Home]}" ]] && bindkey -- "${keys[Home]}" beginning-of-line
+  [[ -n "${keys[End]}"  ]] && bindkey -- "${keys[End]}" end-of-line
+}
+
 autoload -Uz compinit
 compinit
 
