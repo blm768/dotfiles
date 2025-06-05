@@ -85,6 +85,10 @@ function {
     fi
 }
 
+if in_path atuin; then
+    eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
 # Used on Arch Linux with the zsh-syntax-highlighting package
 function {
     local syntax_plugin=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
