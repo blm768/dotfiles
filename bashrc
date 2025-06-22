@@ -11,4 +11,4 @@ PS1='[\u@\h \W]\$ '
 # Get config options common to all (sh-like) shells
 #
 
-source ~/.config/profile.global
+source ~/.config/rc.global

@@ -20,6 +20,7 @@ function sync() {
 
 sync profile ~/.config/profile.global
 sync bashrc ~/.config/bashrc.global
+sync shellrc ~/.config/rc.global
 sync zshrc ~/.config/zshrc.global
 sync nushell/config.nu ~/.config/nushell/config.local.nu
 sync nushell/env.nu ~/.config/nushell/env.local.nu

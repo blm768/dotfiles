@@ -1,6 +1,6 @@
 #
 # ~/.config/profile.global
-# Common options for all my sh-like shells
+# Common login options for all my sh-like shells
 #
 
 #
@@ -13,6 +13,10 @@ function in_path() {
 
 if [ -d ~/.local/bin ]; then
     export PATH="$PATH:$HOME/.local/bin"
+fi
+
+if [ -z "$XDG_DATA_HOME" ]; then
+    export XDG_DATA_HOME=~/.local/share
 fi
 
 # Add Ruby gem executables to PATH
@@ -32,7 +36,6 @@ fi
 
 if in_path nvim; then
     export VISUAL=nvim
-    alias vim=nvim
 elif in_path vim; then
     export VISUAL=vim
 else
@@ -40,27 +43,6 @@ else
 fi
 export EDITOR="$VISUAL"
 export FCEDIT="$EDITOR"
-
-#
-# Aliases
-#
-
-if in_path git; then
-    alias g=git
-fi
-
-# Make ls use colors if it supports them.
-if ls --color=auto ~/.config >/dev/null 2>&1; then
-    alias ls='ls --color=auto'
-fi
-
-if in_path xdg-open; then
-   function open() {
-        for i in "$@"; do
-            xdg-open "$i"
-        done
-   }
-fi
 
 #
 # GPG agent
@@ -77,15 +59,6 @@ fi
 if [ -e "$XDG_RUNTIME_DIR/ssh-agent.sock" ]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
 fi
-
-# Adds all SSH keys in ~/.ssh to the agent cache
-function ssh-add-all() {
-    keys=()
-    for pub in ~/.ssh/*.pub; do
-        keys+=("${pub%.pub}")
-    done
-    ssh-add "${keys[@]}"
-}
 
 #
 # FZF configuration

@@ -2,8 +2,6 @@
 # ~/.config/zshrc.global
 #
 
-export XDG_DATA_HOME=~/.local/share
-
 function in_path() {
     which "$1" > /dev/null 2>&1
 }
@@ -119,4 +117,4 @@ unset -f in_path
 # Get config options common to all (sh-like) shells
 #
 
-source ~/.config/profile.global
+source ~/.config/rc.global
