@@ -84,10 +84,7 @@ function {
             source "${skim_share_path}/key-bindings.zsh"
         fi
     elif in_path fzf; then
-        local fzf_share_path=/usr/share/fzf
-        if ! [ -d "${fzf_share_path}" ]; then # Mac with Homebrew
-            fzf_share_path=/usr/local/opt/fzf/shell
-        fi
+        local fzf_share_path=/usr/share/doc/fzf/examples # Debian/Ubuntu
         if in_path fzf-share; then # Used on NixOS
             fzf_share_path="$(fzf-share)"
         fi
