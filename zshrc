@@ -57,6 +57,10 @@ function {
   [[ -n "${keys[End]}"  ]] && bindkey -- "${keys[End]}" end-of-line
 }
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^O" edit-command-line
+
 autoload -Uz compinit
 compinit
 
