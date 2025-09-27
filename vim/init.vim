@@ -50,10 +50,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " LSP
 if has("nvim-0.6.0")
 lua << EOF
-    local lsp = require("lspconfig")
-    lsp.clangd.setup{}
-    lsp.rnix.setup{}
-    lsp.rust_analyzer.setup{}
+    vim.lsp.enable({"clangd", "rnix", "rust_analyzer"});
 EOF
 endif
 
