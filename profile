@@ -55,7 +55,7 @@ if ls --color=auto ~/.config >/dev/null 2>&1; then
 fi
 
 if in_path xdg-open; then
-   function open() {
+   function start() {
         for i in "$@"; do
             xdg-open "$i"
         done
