@@ -21,8 +21,8 @@ if [ -d ~/.gem ]; then
     export PATH="$PATH:$GEM_HOME/ruby/2.3.0/bin:$GEM_HOME/bin"
 fi
 
-# Add Cargo-installed executables to PATH
-if [ -d ~/.cargo ]; then
+# Add Cargo-installed executables to PATH (unless Nix should be managing Cargo)
+if [ -z "$NIX_PATH" -a -d ~/.cargo ]; then
     export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
