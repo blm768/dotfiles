@@ -17,8 +17,8 @@ function {
     # TODO: show status of previous command (with color or symbol?)
     # The directory color
     local c_dir='%F{4}'
-    # Only show hostname on SSH connections
-    if [[ -z "$SSH_CLIENT" ]]; then
+    # Only show hostname on SSH connections or in containers
+    if [[ -z "$SSH_CLIENT" ]] && ! (in_path systemd-detect-virt && systemd-detect-virt --container > /dev/null); then
         local p_host=''
         local c_accent='%F{1}'
     else
