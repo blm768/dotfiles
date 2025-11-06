@@ -23,6 +23,9 @@ Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
 Plug 'https://github.com/wellle/targets.vim.git'
+" Required for Markdown plugin
+Plug 'https://github.com/godlygeek/tabular.git'
+Plug 'https://github.com/preservim/vim-markdown.git'
 
 if has("nvim-0.8.0")
     Plug 'akinsho/bufferline.nvim'
@@ -214,3 +217,9 @@ toggleterm.setup{
 }
 EOF
 endif
+
+" Markdown
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_folding_style_pythonic = 1
+" Don't collapse by default.
+let g:vim_markdown_folding_level = 6
