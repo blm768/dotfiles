@@ -183,6 +183,11 @@ set noexpandtab
 set autoindent
 set copyindent
 
+" I don't generally work with nroff, so the default macro detection just gets
+" in the way (e.g. when working with CSS).
+set paragraphs=
+set sections=
+
 "
 " Filetype options
 "
