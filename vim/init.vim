@@ -13,7 +13,6 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
 Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/mhinz/vim-grepper.git'
-Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/moll/vim-bbye.git'
 Plug 'https://github.com/rbong/vim-flog'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -26,6 +25,12 @@ Plug 'https://github.com/wellle/targets.vim.git'
 " Required for Markdown plugin
 Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'https://github.com/preservim/vim-markdown.git'
+
+if has("nvim-0.9.0")
+    Plug 'https://github.com/lewis6991/gitsigns.nvim.git'
+else
+    Plug 'https://github.com/mhinz/vim-signify.git'
+endif
 
 if has("nvim-0.8.0")
     Plug 'akinsho/bufferline.nvim'
@@ -45,6 +50,75 @@ if has("nvim-0.5.0")
     Plug 'nvim-lualine/lualine.nvim'
 endif
 call plug#end()
+
+" Gitsigns
+lua << EOF
+require('gitsigns').setup{
+  on_attach = function(bufnr)
+    local gitsigns = require('gitsigns')
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({']c', bang = true})
+      else
+        gitsigns.nav_hunk('next')
+      end
+    end)
+
+    map('n', '[c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({'[c', bang = true})
+      else
+        gitsigns.nav_hunk('prev')
+      end
+    end)
+
+    -- Actions
+    map('n', '<leader>hs', gitsigns.stage_hunk)
+    map('n', '<leader>hr', gitsigns.reset_hunk)
+
+    map('v', '<leader>hs', function()
+      gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end)
+
+    map('v', '<leader>hr', function()
+      gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end)
+
+    map('n', '<leader>hS', gitsigns.stage_buffer)
+    map('n', '<leader>hR', gitsigns.reset_buffer)
+    map('n', '<leader>hp', gitsigns.preview_hunk)
+    map('n', '<leader>hi', gitsigns.preview_hunk_inline)
+
+    map('n', '<leader>hb', function()
+      gitsigns.blame_line({ full = true })
+    end)
+
+    map('n', '<leader>hd', gitsigns.diffthis)
+
+    map('n', '<leader>hD', function()
+      gitsigns.diffthis('~')
+    end)
+
+    map('n', '<leader>hQ', function() gitsigns.setqflist('all') end)
+    map('n', '<leader>hq', gitsigns.setqflist)
+
+    -- Toggles
+    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+    map('n', '<leader>tw', gitsigns.toggle_word_diff)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', gitsigns.select_hunk)
+  end
+}
+EOF
 
 " Configure NERDTree
 " Don't let NERDTree keep vim open:
@@ -151,7 +225,9 @@ set showmatch
 
 set mouse=a
 " Make vim-signify update more frequently
-set updatetime=100
+if has("nvim-0.9.0") == 0
+    set updatetime=100
+end
 
 if executable('rg')
     set grepprg=rg\ --vimgrep
