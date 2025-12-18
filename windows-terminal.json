@@ -18,6 +18,12 @@
                 "name": "cmd",
                 "commandline": "cmd.exe",
                 "hidden": false
+            },
+            {
+                "commandline": "%HOME%\\scoop\\shims\\nu.exe",
+                "guid": "{66b19eff-c200-4fc0-9710-7b595312bafa}",
+                "hidden": false,
+                "name": "Nushell"
             }
         ]
     },
