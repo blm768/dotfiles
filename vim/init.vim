@@ -298,6 +298,10 @@ if executable('rg')
     set grepprg=rg\ --vimgrep
 endif
 
+if has('nvim')
+    set exrc
+endif
+
 "
 " Commands and mappings
 "
