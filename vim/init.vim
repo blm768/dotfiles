@@ -57,6 +57,7 @@ endif
 call plug#end()
 
 " Gitsigns
+if has("nvim-0.9.0")
 lua << EOF
 require('gitsigns').setup{
   on_attach = function(bufnr)
@@ -124,6 +125,7 @@ require('gitsigns').setup{
   end
 }
 EOF
+endif
 
 " Configure NERDTree
 " Don't let NERDTree keep vim open:
