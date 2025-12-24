@@ -64,6 +64,8 @@ bindkey "^O" edit-command-line
 autoload -Uz compinit
 compinit
 
+compdef _gnu_generic start
+
 #
 # History options
 #
