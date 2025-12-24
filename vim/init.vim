@@ -34,14 +34,11 @@ endif
 
 if has("nvim-0.8.0")
     Plug 'akinsho/bufferline.nvim'
-    Plug 'nvim-tree/nvim-web-devicons'
 endif
 
 if has("nvim-0.7.0")
     Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
     Plug 'https://github.com/julienvincent/hunk.nvim'
-    " For hunk.nvim
-    Plug 'https://github.com/nvim-tree/nvim-web-devicons'
     " For hunk.nvim
     Plug 'https://github.com/MunifTanjim/nui.nvim'
 endif
@@ -51,7 +48,8 @@ if has("nvim-0.6.0")
 endif
 
 if has("nvim-0.5.0")
-    Plug 'kyazdani42/nvim-web-devicons'
+    " For hunk.nvim, bufferline, and lualine
+    Plug 'https://github.com/nvim-tree/nvim-web-devicons'
     Plug 'nvim-lualine/lualine.nvim'
 endif
 call plug#end()
