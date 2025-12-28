@@ -41,6 +41,8 @@ if has("nvim-0.7.0")
     Plug 'https://github.com/julienvincent/hunk.nvim'
     " For hunk.nvim
     Plug 'https://github.com/MunifTanjim/nui.nvim'
+    " Diffs for all files in a Git revision
+    Plug 'sindrets/diffview.nvim'
 endif
 
 if has("nvim-0.6.0")
@@ -48,7 +50,7 @@ if has("nvim-0.6.0")
 endif
 
 if has("nvim-0.5.0")
-    " For hunk.nvim, bufferline, and lualine
+    " For hunk.nvim, bufferline, lualine, and diffview
     Plug 'https://github.com/nvim-tree/nvim-web-devicons'
     Plug 'nvim-lualine/lualine.nvim'
 endif
@@ -274,6 +276,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>h :bprev<cr>
 nnoremap <leader>l :bnext<cr>
 nnoremap <leader>q :Bdelete<cr>
+nnoremap <leader>Q :tabclose<cr>
 
 " Emmet
 
@@ -309,3 +312,15 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_folding_style_pythonic = 1
 " Don't collapse by default.
 let g:vim_markdown_folding_level = 6
+
+" Flog
+
+augroup MyFlogSettings
+    " Use Diffview for Flog diffs
+    autocmd FileType floggraph nnoremap <buffer> <CR> :<C-U>exec flog#Format('DiffviewOpen %h')<CR>
+    autocmd FileType floggraph nnoremap <buffer> <Tab> :<C-U>exec flog#Format("DiffviewOpen %h %P")<CR>
+    autocmd FileType floggraph nnoremap <buffer> dd :<C-U>exec flog#Format('DiffviewOpen %h')<CR>
+    autocmd FileType floggraph vnoremap <buffer> dd :<C-U>exec flog#Format("DiffviewOpen %(h'>)..%(h'<)")<CR>
+    autocmd FileType floggraph nnoremap <buffer> dp :<C-U>exec flog#Format('DiffviewOpen %h %P')<CR>
+    autocmd FileType floggraph vnoremap <buffer> dp :<C-U>exec flog#Format("DiffviewOpen %(h'>)..%(h'<) %P")<CR>
+augroup END
