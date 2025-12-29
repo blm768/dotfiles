@@ -317,10 +317,10 @@ let g:vim_markdown_folding_level = 6
 
 augroup MyFlogSettings
     " Use Diffview for Flog diffs
-    autocmd FileType floggraph nnoremap <buffer> <CR> :<C-U>exec flog#Format('DiffviewOpen %h')<CR>
-    autocmd FileType floggraph nnoremap <buffer> <Tab> :<C-U>exec flog#Format("DiffviewOpen %h %P")<CR>
-    autocmd FileType floggraph nnoremap <buffer> dd :<C-U>exec flog#Format('DiffviewOpen %h')<CR>
+    autocmd FileType floggraph nnoremap <buffer> <CR> :<C-U>exec flog#Format('DiffviewOpen %h^!')<CR>
+    autocmd FileType floggraph nnoremap <buffer> <Tab> :<C-U>exec flog#Format("DiffviewOpen %h^! %P")<CR>
+    autocmd FileType floggraph nnoremap <buffer> dd :<C-U>exec flog#Format('DiffviewOpen %h^!')<CR>
     autocmd FileType floggraph vnoremap <buffer> dd :<C-U>exec flog#Format("DiffviewOpen %(h'>)..%(h'<)")<CR>
-    autocmd FileType floggraph nnoremap <buffer> dp :<C-U>exec flog#Format('DiffviewOpen %h %P')<CR>
+    autocmd FileType floggraph nnoremap <buffer> dp :<C-U>exec flog#Format('DiffviewOpen %h^! %P')<CR>
     autocmd FileType floggraph vnoremap <buffer> dp :<C-U>exec flog#Format("DiffviewOpen %(h'>)..%(h'<) %P")<CR>
 augroup END
