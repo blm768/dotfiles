@@ -104,8 +104,12 @@ if in_path atuin; then
     eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
-# Used on Arch Linux with the zsh-syntax-highlighting package
+# Used on Arch Linux with the zsh-autosuggestions and zsh-syntax-highlighting packages
 function {
+    local suggest_plugin=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    if [ -f "$suggest_plugin" ]; then
+        source "$suggest_plugin"
+    fi
     local syntax_plugin=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     if [ -f "$syntax_plugin" ]; then
         source "$syntax_plugin"
