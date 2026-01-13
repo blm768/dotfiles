@@ -28,6 +28,9 @@ Plug 'https://github.com/preservim/vim-markdown.git'
 
 if has("nvim-0.9.0")
     Plug 'https://github.com/lewis6991/gitsigns.nvim.git'
+    Plug 'https://github.com/hrsh7th/nvim-cmp.git'
+    Plug 'https://github.com/hrsh7th/cmp-buffer.git'
+    Plug 'https://github.com/hrsh7th/cmp-nvim-lsp.git'
 else
     Plug 'https://github.com/mhinz/vim-signify.git'
 endif
@@ -127,6 +130,36 @@ require('gitsigns').setup{
 EOF
 endif
 
+" nvim-cmp
+"if has("nvim-0.9.0")
+lua << EOF
+local cmp = require('cmp')
+cmp.setup{
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+    }),
+    snippet = {
+        expand = function(args)
+            vim.snippet.expand(args.body)
+        end,
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'buffer' },
+    }),
+    view = {
+        docs = {
+            auto_open = true,
+        },
+    },
+}
+EOF
+
 " Configure NERDTree
 " Don't let NERDTree keep vim open:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -134,7 +167,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " LSP
 if has("nvim-0.6.0")
 lua << EOF
-    vim.lsp.enable({"clangd", "rnix", "rust_analyzer"});
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local lsps = {"clangd", "rnix", "rust_analyzer"}
+    for i, lsp in pairs(lsps) do
+        vim.lsp.config(lsp, {
+            capabilities = capabilities,
+        });
+    end
+    vim.lsp.enable(lsps);
 EOF
 endif
 
