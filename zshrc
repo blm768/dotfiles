@@ -28,9 +28,10 @@ function {
     local p_prefix="${c_accent}[%f"
     local p_user='%n'
     local p_dir="${c_dir}%~%f"
+    local p_jobs="%(1j. %F{7}%K{3}%B+%b%k%f.)"
     local p_suffix="$c_accent]%(!.#.$)%f "
 
-    PS1="${p_prefix}${p_user}${p_host} ${p_dir}${p_suffix}"
+    PS1="${p_prefix}${p_user}${p_host} ${p_dir}${p_jobs}${p_suffix}"
 }
 
 #
