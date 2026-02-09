@@ -31,6 +31,7 @@ if has("nvim-0.9.0")
     Plug 'https://github.com/hrsh7th/nvim-cmp.git'
     Plug 'https://github.com/hrsh7th/cmp-buffer.git'
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp.git'
+    Plug 'https://github.com/jceb/jiejie.nvim.git'
 else
     Plug 'https://github.com/mhinz/vim-signify.git'
 endif
