@@ -387,3 +387,8 @@ augroup MyFlogSettings
     autocmd FileType floggraph nnoremap <buffer> dp :<C-U>exec flog#Format('DiffviewOpen %h^! %P')<CR>
     autocmd FileType floggraph vnoremap <buffer> dp :<C-U>exec flog#Format("DiffviewOpen %(h'>)..%(h'<) %P")<CR>
 augroup END
+ 
+function FlogFrom(from)
+    exe "Flog -rev="..a:from.."..@"
+endfunction
+command! -nargs=1 FlogFrom call FlogFrom(<f-args>)
