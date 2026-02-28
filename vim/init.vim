@@ -132,7 +132,7 @@ EOF
 endif
 
 " nvim-cmp
-"if has("nvim-0.9.0")
+if has("nvim-0.9.0")
 lua << EOF
 local cmp = require('cmp')
 cmp.setup{
@@ -160,6 +160,7 @@ cmp.setup{
     },
 }
 EOF
+endif
 
 " Configure NERDTree
 " Don't let NERDTree keep vim open:
