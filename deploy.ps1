@@ -8,7 +8,7 @@ Copy-Item nushell\env.nu "$env:APPDATA\nushell\env.global.nu"
 
 # Git
 
-robocopy .\git "$HOME\AppData\Local\gitconfig" /MIR
+robocopy .\git "$USERPROFILE\AppData\Local\gitconfig" /MIR
 
 # Windows Terminal
 
@@ -43,7 +43,7 @@ function Merge-Objects {
     return $right;
 }
 
-$config_dir = "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+$config_dir = "$USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
 $config = Get-Content windows-terminal.json -Raw | ConvertFrom-Json
 $local_file = "$config_dir\local.json"
 if (Test-Path $local_file) {
@@ -57,4 +57,4 @@ $config = ConvertTo-Json -InputObject $config -Depth 100
 
 # (Neo)vim
 
-robocopy .\vim "$HOME\AppData\Local\nvim" /MIR
+robocopy .\vim "$USERPROFILE\AppData\Local\nvim" /MIR
