@@ -208,6 +208,13 @@ set termguicolors
 lua << EOF
 require("bufferline").setup {
     options = {
+        custom_filter = function(buf_number)
+            local buf_options = vim.bo[buf_number]
+            if buf_options['buftype'] == 'quickfix' then
+                return false
+            end
+            return true
+        end,
         diagnostics = "nvim_lsp",
     },
 }
@@ -315,8 +322,14 @@ nnoremap <C-l> <C-w>l
 
 " Buffer navigation
 
-nnoremap <leader>h :bprev<cr>
-nnoremap <leader>l :bnext<cr>
+if has_key(g:plugs, 'bufferline.nvim')
+    " Uses bufferline order and skips filtered-out buffers
+    nnoremap <leader>h :BufferLineCyclePrev<cr>
+    nnoremap <leader>l :BufferLineCycleNext<cr>
+else
+    nnoremap <leader>h :bprev<cr>
+    nnoremap <leader>l :bnext<cr>
+endif
 nnoremap <leader>q :Bdelete<cr>
 nnoremap <leader>Q :tabclose<cr>
 
