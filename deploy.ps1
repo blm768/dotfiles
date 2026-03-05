@@ -57,4 +57,4 @@ $config = ConvertTo-Json -InputObject $config -Depth 100
 
 # (Neo)vim
 
-robocopy .\vim "$USERPROFILE\AppData\Local\nvim" /MIR
+robocopy .\vim "$USERPROFILE\AppData\Local\nvim" /MIR /XD plugged /XD swap

@@ -26,7 +26,7 @@ sync nushell/env.nu ~/.config/nushell/env.global.nu
 
 sync git/ ~/.config/git/global/
 
-sync vim/ ~/.config/nvim/
+sync vim/ ~/.config/nvim/ --exclude='/plugged/' --exclude='/swap/'
 [ -f ~/.vimrc ] || ln -s ./.config/nvim/init.vim ~/.vimrc
 [ -d ~/.vim ] || ln -s ./.config/nvim ~/.vim
 
