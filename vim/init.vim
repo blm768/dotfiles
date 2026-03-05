@@ -60,8 +60,12 @@ if has("nvim-0.5.0")
 endif
 call plug#end()
 
+function s:plug_installed(name)
+    return has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
+endfunction
+
 " Gitsigns
-if has("nvim-0.9.0")
+if s:plug_installed('gitsigns.nvim')
 lua << EOF
 require('gitsigns').setup{
   on_attach = function(bufnr)
@@ -132,7 +136,7 @@ EOF
 endif
 
 " nvim-cmp
-if has("nvim-0.9.0")
+if s:plug_installed('nvim-cmp')
 lua << EOF
 local cmp = require('cmp')
 cmp.setup{
@@ -167,7 +171,7 @@ endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " LSP
-if has("nvim-0.6.0")
+if s:plug_installed('nvim-lspconfig')
 lua << EOF
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local lsps = {"clangd", "rnix", "rust_analyzer"}
@@ -181,7 +185,7 @@ EOF
 endif
 
 " Lualine
-if has("nvim-0.5.0")
+if s:plug_installed('lualine.nvim')
 lua << EOF
 require('lualine').setup {
     options = {
@@ -203,7 +207,7 @@ EOF
 endif
 
 " Bufferline
-if has("nvim-0.8.0")
+if s:plug_installed('bufferline.nvim')
 set termguicolors
 lua << EOF
 require("bufferline").setup {
@@ -286,7 +290,7 @@ set showmatch
 
 set mouse=a
 " Make vim-signify update more frequently
-if has("nvim-0.9.0") == 0
+if s:plug_installed('vim-signify')
     set updatetime=100
 end
 
@@ -322,7 +326,7 @@ nnoremap <C-l> <C-w>l
 
 " Buffer navigation
 
-if has_key(g:plugs, 'bufferline.nvim')
+if s:plug_installed('bufferline.nvim')
     " Uses bufferline order and skips filtered-out buffers
     nnoremap <leader>h :BufferLineCyclePrev<cr>
     nnoremap <leader>l :BufferLineCycleNext<cr>
@@ -353,7 +357,7 @@ nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
 " Toggleterm
-if has("nvim-0.7.0")
+if s:plug_installed('toggleterm.nvim')
 lua << EOF
 local toggleterm = require("toggleterm")
 toggleterm.setup{
