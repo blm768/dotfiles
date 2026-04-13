@@ -302,6 +302,9 @@ if has('nvim')
     set exrc
 endif
 
+" Generally produces nicer diffs
+set diffopt+=algorithm:histogram
+
 "
 " Commands and mappings
 "
