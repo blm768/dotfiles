@@ -22,9 +22,6 @@ Plug 'https://github.com/junegunn/fzf.git'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
 Plug 'https://github.com/wellle/targets.vim.git'
-" Required for Markdown plugin
-Plug 'https://github.com/godlygeek/tabular.git'
-Plug 'https://github.com/preservim/vim-markdown.git'
 
 if has("nvim-0.9.0")
     Plug 'https://github.com/lewis6991/gitsigns.nvim.git'
@@ -32,6 +29,7 @@ if has("nvim-0.9.0")
     Plug 'https://github.com/hrsh7th/cmp-buffer.git'
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp.git'
     Plug 'https://github.com/jceb/jiejie.nvim.git'
+    Plug 'https://github.com/MeanderingProgrammer/render-markdown.nvim.git'
 else
     Plug 'https://github.com/mhinz/vim-signify.git'
 endif
@@ -372,12 +370,6 @@ toggleterm.setup{
 }
 EOF
 endif
-
-" Markdown
-let g:vim_markdown_new_list_item_indent = 2
-let g:vim_markdown_folding_style_pythonic = 1
-" Don't collapse by default.
-let g:vim_markdown_folding_level = 6
 
 " Flog
 
