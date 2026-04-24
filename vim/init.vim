@@ -388,7 +388,7 @@ if s:plug_installed('toggleterm.nvim')
 lua << EOF
 local toggleterm = require("toggleterm")
 toggleterm.setup{
-    open_mapping = [[<c-\>]],
+    open_mapping = [[<c-`>]],
 }
 EOF
 endif
