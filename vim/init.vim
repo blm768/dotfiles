@@ -277,6 +277,9 @@ endif
 " Display options
 "
 
+set list
+set listchars=trail:•,nbsp:+,extends:⇒,precedes:⇐
+set linebreak
 set scrolloff=2
 set number
 set cursorline
