@@ -278,7 +278,7 @@ endif
 "
 
 set list
-set listchars=trail:•,nbsp:+,extends:⇒,precedes:⇐
+set listchars=trail:•,tab:\ \ ,nbsp:+,extends:⇒,precedes:⇐
 set linebreak
 set scrolloff=2
 set number
