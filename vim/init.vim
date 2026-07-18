@@ -258,6 +258,10 @@ set noexpandtab
 set autoindent
 set copyindent
 
+set breakindent
+set breakindentopt+=sbr
+let &showbreak = "⏎ "
+
 " I don't generally work with nroff, so the default macro detection just gets
 " in the way (e.g. when working with CSS).
 set paragraphs=
