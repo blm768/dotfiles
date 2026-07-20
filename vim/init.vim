@@ -420,6 +420,13 @@ lua << EOF
 local toggleterm = require("toggleterm")
 toggleterm.setup{
     open_mapping = [[<c-`>]],
+    size = function(term)
+        if term.direction == "horizontal" then
+            return vim.o.lines * 0.4
+        else
+            return vim.o.columns * 0.4
+        end
+    end
 }
 EOF
 endif
