@@ -11,7 +11,6 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
-Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/mhinz/vim-grepper.git'
 Plug 'https://github.com/moll/vim-bbye.git'
 Plug 'https://github.com/rbong/vim-flog'
@@ -30,6 +29,7 @@ if has("nvim-0.9.0")
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp.git'
     Plug 'https://github.com/jceb/jiejie.nvim.git'
     Plug 'https://github.com/MeanderingProgrammer/render-markdown.nvim.git'
+    Plug 'https://github.com/olrtg/nvim-emmet.git'
 else
     Plug 'https://github.com/mhinz/vim-signify.git'
 endif
@@ -172,7 +172,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 if s:plug_installed('nvim-lspconfig')
 lua << EOF
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local lsps = {"clangd", "rnix", "rust_analyzer"}
+    local lsps = {
+        "clangd",
+        "emmet_language_server",
+        "rnix",
+        "rust_analyzer",
+    }
     for i, lsp in pairs(lsps) do
         vim.lsp.config(lsp, {
             capabilities = capabilities,
@@ -397,7 +402,11 @@ nnoremap <leader>Q :tabclose<cr>
 
 " Emmet
 
-let g:user_emmet_install_global = 0
+if s:plug_installed('nvim-emmet')
+lua <<EOF
+vim.keymap.set({ "n", "v" }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
+EOF
+endif
 
 " FZF bindings
 
