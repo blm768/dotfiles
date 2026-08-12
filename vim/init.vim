@@ -22,6 +22,10 @@ Plug 'https://github.com/junegunn/fzf.vim.git'
 Plug 'https://github.com/junegunn/gv.vim.git'
 Plug 'https://github.com/wellle/targets.vim.git'
 
+if has("nvim-0.10.0")
+    Plug 'https://github.com/stevearc/conform.nvim.git'
+endif
+
 if has("nvim-0.9.0")
     Plug 'https://github.com/lewis6991/gitsigns.nvim.git'
     Plug 'https://github.com/hrsh7th/nvim-cmp.git'
@@ -184,28 +188,52 @@ lua << EOF
         });
     end
     vim.lsp.enable(lsps);
+EOF
+endif
 
-    vim.g.LspAutoFormat = false
-    vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('lsp.autoformat', {}),
-      callback = function(args)
-          if not vim.g.LspAutoFormat then
-              return
-          end
-          local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-          -- Auto-format on save.
-          if not client:supports_method('textDocument/willSaveWaitUntil')
-                  and client:supports_method('textDocument/formatting') then
-              vim.api.nvim_create_autocmd('BufWritePre', {
-                  group = vim.api.nvim_create_augroup('lsp.autoformat', {clear=false}),
-                  buffer = args.buf,
-                  callback = function()
-                      vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-                  end,
-              })
-          end
-      end,
-    })
+if s:plug_installed('conform.nvim')
+lua << EOF
+local prettier = { "prettierd", "prettier", stop_after_first = true }
+local formatters_by_ft = {
+        c = { "clang-format" },
+        css = prettier,
+        cpp = { "clang-format" },
+        javascript = prettier,
+        html = prettier,
+        rust = { "rustfmt" },
+        typescript = prettier,
+}
+require("conform").setup({
+    default_format_opts = {
+        lsp_format = "fallback",
+    },
+    formatters_by_ft = formatters_by_ft,
+})
+-- Should be overridden in project/workspace configuration as desired
+vim.g.ConformAutoFormat = false
+vim.api.nvim_create_autocmd({'BufNewFile','BufRead'}, {
+  group = vim.api.nvim_create_augroup('conform.autoformat', {}),
+  callback = function(args)
+      if not vim.g.ConformAutoFormat then
+          return
+      end
+      vim.api.nvim_create_autocmd("BufWritePre", {
+          group = vim.api.nvim_create_augroup('conform.autoformat', {clear=false}),
+          buffer = args.buf,
+          callback = function(args)
+              require("conform").format({ bufnr = args.buf })
+          end,
+      })
+  end,
+})
+-- Set 'formatexpr' if it makes sense for the file type.
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(args)
+        if formatters_by_ft[vim.o.filetype] ~= nil then
+            vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
+        end
+    end,
+})
 EOF
 endif
 
