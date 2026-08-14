@@ -48,7 +48,7 @@ if has("nvim-0.7.0")
     " For hunk.nvim
     Plug 'https://github.com/MunifTanjim/nui.nvim'
     " Diffs for all files in a Git revision
-    Plug 'sindrets/diffview.nvim'
+    Plug 'https://github.com/dlyongemallo/diffview-plus.nvim'
 endif
 
 if has("nvim-0.6.0")
