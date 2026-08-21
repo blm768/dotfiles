@@ -317,6 +317,10 @@ autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 
 set incsearch
 
+if has('nvim')
+    packadd nohlsearch
+end
+
 set wildmode=longest,list
 set shellslash
 
