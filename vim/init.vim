@@ -200,6 +200,7 @@ local formatters_by_ft = {
         cpp = { "clang-format" },
         javascript = prettier,
         html = prettier,
+        nix = { "nixfmt" },
         rust = { "rustfmt" },
         typescript = prettier,
 }
