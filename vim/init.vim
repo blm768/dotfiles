@@ -9,7 +9,6 @@ set nocompatible
 call plug#begin()
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
-Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/LnL7/vim-nix'
 Plug 'https://github.com/mhinz/vim-grepper.git'
 Plug 'https://github.com/moll/vim-bbye.git'
