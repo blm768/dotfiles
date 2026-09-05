@@ -180,6 +180,7 @@ lua << EOF
         "emmet_language_server",
         "rnix",
         "rust_analyzer",
+        "superhtml",
     }
     for i, lsp in pairs(lsps) do
         vim.lsp.config(lsp, {
