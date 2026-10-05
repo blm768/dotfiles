@@ -201,6 +201,7 @@ local formatters_by_ft = {
         javascript = prettier,
         html = prettier,
         nix = { "nixfmt" },
+        nu = { "nufmt" },
         rust = { "rustfmt" },
         typescript = prettier,
 }
