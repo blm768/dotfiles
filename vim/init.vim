@@ -388,6 +388,9 @@ if executable('rg')
     set grepprg=rg\ --vimgrep
 endif
 
+" Enable cfilter-plugin (shipped with Vim as optional)
+packadd cfilter
+
 if has('nvim')
     set exrc
 endif
